@@ -8,4 +8,5 @@ Link: http://everypageispageone.com/
 - The initialism RTFM (Read The Fucking Manual) has been around at least since the 80s.
 - People no longer use individual sources of information. They include everything and filter it afterwards. Therefore, content that is not on the Web is much less likely to be found and consumed.
 - People prefer to search the Web because it lets them find more content in less time.
-- 
+- The growth of long tail information drives demand for information in the long tail.
+- Don’t expect your users to change their information seeking habits just for your documentation. 
