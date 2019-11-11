@@ -50,6 +50,8 @@ An example for generating random numbers between 1 and 10:
 
 ---
 
+## Comparison between strings and between string and number
+
 `'arco' < 'bolha'` = `true`
 JS considers the first letter of the string to make this comparison.
 
@@ -58,8 +60,41 @@ A letter is always greater than a number.
 
 ---
 
+## `==` vs. `===`
+
 `==`: Equal to --> `"7" == 7` is true -> JS converts the string to a number to make the comparison.
 `===`: Strict equal to --> `"7" === 7` is false -> JS compares the value and the type.
+
+---
+
+## A `return` statement causes the function to exit *immediately*
+
+---
+
+## Function accessing the global scope
+
+Without the `var` or `let` keyword inside the function, it is accessing the global scope, which is usually a *bad idea*.
+
+Example
+
+```
+let name = 'Brian';
+
+function upperName() {
+	name = name.toUpperCase();
+	return name;
+}
+
+```
+
+Without using the `var` or `let` keywords inside the function, I'm overwriting the `name` global variable.
+
+---
+
+## throw new Error("Error message");
+
+
+This throws an error to the console
 
 ---
 
