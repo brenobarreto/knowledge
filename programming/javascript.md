@@ -91,8 +91,7 @@ Without using the `var` or `let` keywords inside the function, I'm overwriting t
 
 ---
 
-## throw new Error("Error message");
-
+## `throw new Error("Error message");`
 
 This throws an error to the console
 
