@@ -63,3 +63,28 @@ When you float elements, the parent container's height collapses, because it no 
 The `overflow` shorthand CSS property sets what to do when an element's content is too big to fit in its block formatting context. 
 
 When using `overflow: hidden` fixes it by forcing the header to expand and contain the floating elements.
+
+---
+
+## `absolute` and `relative` positioning
+
+By default, the browser viewport is the positioning context for elements with `absolute` position.
+
+An element with `absolute` position is always relative to the first parent that has `relative` position. The first parent with `relative` position becomes the positining context for the element with `absolute` position.
+
+---
+
+## `z-index`
+
+Positioned elements follow a stacking order that determines which elements are displayed above others.
+
+By default, the staking order is defined by the order the elements appear in the source code. Elements that appear later in the HTML sit on top of elements that appear earlier.
+
+We can adjust the stacking order of relative, absolute and fixed elements with the z-index property.
+
+An element with a higher z-index value overlaps elements with lower z-index values when they occupy the same space.
+
+Positioned elements have a z-index of 0 by default.
+
+---
+
