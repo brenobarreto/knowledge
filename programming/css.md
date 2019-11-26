@@ -88,3 +88,45 @@ Positioned elements have a z-index of 0 by default.
 
 ---
 
+## transition
+
+The shorthand is written as follows:
+
+transition: <property> <duration> <timing-function> <delay>
+
+Example:
+
+`transition: font-size 2s ease 1s`
+
+---
+
+## flexbox
+
+- `display: flex` //turns the element into a flexbox container, occupying the entire line
+- `display: inline-flex` //flexbox container acting as an inline element 
+- `flex-direction: row`
+- `flex-direction: row-reverse`
+- `flex-direction: column`
+- `flex-direction: column-reverse`
+- `flex-wrap: wrap` //wraps child elements in more than one row or column so they fit regardless the size of the window
+- `justify-content: flex-start` //(default)
+- `justify-content: flex-end`
+- `justify-content: center`
+- `justify-content: space-between` //puts equal space between the flex elements, with the first and last elements at the edges
+- `justify-content: space-around` //puts equal space between the flex elements and between the first and last elements and the edges
+- `order` //the default value is `0`. So, if I want to show an element first, I can use any value lower than 0. If I want to show it later, I can use any value greater than 0.
+- `flex-grow` //the default value is `0`. With different values, the items expand. The higher the value, the more space the element takes compared to the others.
+- `flex-basis` //sets the initial main size of a flex item. 
+- `flex` is shorthand for `flex-grow`, `flex-basis` and `flex-shrink`.
+- `align-items: stretch` //items stretch vertically
+- `align-items: flex-start` //items align to the start of the cross axis
+- `align-items: flex-end` //items align to the end of the cross axis
+- `align-items: center` //aligns items in the cross axis
+- `align-self` //alignment of single elements
+
+Important:
+Using `margin: auto` in a flex item makes its margin occupy the entire space between the element and its sibling.
+With it, we can override the alignment specified by `justify-content`.
+
+---
+
