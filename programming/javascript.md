@@ -227,3 +227,14 @@ for (let key in employee) {
 
 ---
 
+## Listening for clicks
+
+```js
+let buttonHello = document.getElementById('hello');
+buttonHello.addEventListener('click', () => {
+	// do something
+});
+```
+
+---
+
