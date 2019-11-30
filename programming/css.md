@@ -130,3 +130,34 @@ With it, we can override the alignment specified by `justify-content`.
 
 ---
 
+## Attribute selectors
+
+```css
+[class]				//targets every element that has any class
+[id="main"]			//targets every element with id "main"
+input[type="text"]	//targets input elements with a type attribute of "text"
+```
+
+---
+
+## CSS combinators
+
+`>` //direct children -> targets all immediate children (does not target other descendants [grandchildren, etc.])
+
+`+` //adjacent sibling -> targets the second element only if it immediately follows the first element, and both are children of the same parent element
+Example:
+```
+img + p {				//this will target paragraphs that come immediately after any image 
+	font-style: bold;
+}
+```
+
+`~` //general sibling combinator -> targets the second element only if it follows the first element (though not necessarily immediately), and both are children of the same parent element
+```
+img ~ p {				//this will target every paragraph that is sibling to any image 
+	font-style: bold;
+}
+```
+
+---
+
