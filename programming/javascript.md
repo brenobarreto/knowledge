@@ -238,3 +238,173 @@ buttonHello.addEventListener('click', () => {
 
 ---
 
+## querySelector vs. querySelectorAll
+
+`document.querySelector()` returns the first HTML element that mathces
+`document.querySelectorAll()` returns a collection of all HTML elements that match
+
+Note 1: with `querySelector` you need to provide the dot in case you want a class or a pound if you want an id
+Examples: `document.querySelector('.main')` | `document.querySelector('#items')`
+
+Note 2: you can select any attribute this way:
+`document.querySelector('[attribute=value]')`
+
+Note 3: you can use descendant selectors:
+`galleryLinks = document.querySelectorAll('#gallery a');`
+or
+`navigationLinks = document.querySelectorAll('nav ul li a');` //this brings a collection of `<a>` elements inside every `<li>` inside every `<ul>` inside every `<nav>` 
+
+---
+
+## textContent and innerHTML
+
+```html
+<p class="el">Texto</p>
+<ul>
+	<li>1</li>
+	<li>2</li>
+</ul>
+```
+```js
+let element = document.querySelector('el');
+let text = element.textContent; // text = "Texto"
+let list = document.querySelector('ul');
+let listContent = list.innerHTML; // listContent = "<li>1</li> <li>2</li>"
+```
+
+---
+
+## className
+
+To get the class of an element we use the property `.className`
+
+`<a href="#" class="topLink">Hey</a>`
+```js
+let link = document.querySelector('.topLink');
+let linkClass = link.className; // linkClass = 'topLink'
+```
+
+---
+
+## Appending nodes
+
+node.appendChild(childElement)
+
+```
+<p id="par">text</p>
+<div class="main"></div>
+```
+```js
+let paragraph = document.getElementById('par');
+let mainDiv = document.getElementsByClassName('main');
+mainDiv.appendChild(paragraph);
+```
+
+---
+
+## Removing elements
+
+node.removeChild(ChildElements)
+
+---
+
+## Passing functions into functions
+
+Functions are first-class citizens in JS, so they can be passed as arguments.
+
+```js
+function say(what){
+	alert(what);
+}
+
+function execFunc(func, arg){
+	func(arg);
+}
+
+execFunc(say, 'olá');
+
+/* Turning that into a function expression*/
+execFunc(function say(what){
+	alert(what);
+}, 'olá');
+
+/* Turning the function passed in as argument into an arrow function*/
+execFunc((what) => {
+	alert(what);
+}, 'olá');
+```
+
+---
+
+## Event Bubbling
+
+If we set an event handler on an element, the callback will trigger whenever its children are triggered.
+Example: `<div class="hasClickEvent"><ul><li><p>Hello</p></li></ul></div>`
+>If p, li or ul are clicked, the callback will be triggered.
+
+However, it's ideal to add the event listener as close to the target element as possible. 
+
+---
+
+## The Event object
+
+When an event handler is called, it receives an Event object as its first argument.
+
+```js
+let container = document.querySelector('div.main');
+container.addEventListener('click', (event) => {
+	console.log(event);		// this logs the event object passed in when the div is clicked
+})
+```
+
+---
+
+## parentNode
+
+```
+<div>
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+	</ul>
+</div>
+```
+```js
+let listItem1 = document.getElementsByTagName('li')[0];
+let parent = listItem1.parentNode; //parent = <ul>...</ul>
+```
+
+---
+
+## previousElementSibling | nextElementSibling
+
+```
+<div>
+	<ul>
+		<li class="c1">Item 1</li>
+		<li class="c2">Item 2</li>
+	</ul>
+</div>
+```
+```js
+let listItem2 = document.getElementsByTagName('li')[1];
+let previous = listItem2.previousElementSibling; //previous = <li class="c1">Item 1</li>
+```
+
+---
+
+## insertBefore()
+
+```
+[parentNode].insertBefore([newNode],[referenceNode]); 
+//the [referenceNode] is the one before which the [newNode] will be inserted
+```
+
+---
+
+## .children | .firstElementChild | .lastElementChild
+
+* [el].firstElementChild = [el].children[0]
+
+---
+
