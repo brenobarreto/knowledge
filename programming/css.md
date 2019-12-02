@@ -145,10 +145,15 @@ input[type="text"]	//targets input elements with a type attribute of "text"
 `>` //direct children -> targets all immediate children (does not target other descendants [grandchildren, etc.])
 
 `+` //adjacent sibling -> targets the second element only if it immediately follows the first element, and both are children of the same parent element
-Example:
+Examples:
 ```
 img + p {				//this will target paragraphs that come immediately after any image 
 	font-style: bold;
+}
+```
+```
+input[type="checkbox"]:checked + label {
+	font-weight: bold;	//this will make every label next to a ckecked radio or checkbox bold
 }
 ```
 
@@ -158,6 +163,56 @@ img ~ p {				//this will target every paragraph that is sibling to any image
 	font-style: bold;
 }
 ```
+
+---
+
+## `:first-child` and `:last-child`
+
+`li:first-child` //targets every first li element
+`li:last-child` //targets every last li element
+
+---
+
+## `:only-child`
+
+Targets elements that have no siblings
+
+---
+
+## `:empty`
+
+Targets elements that have no content or no other elements nested inside
+
+---
+
+## Substring matching attribute selectors
+
+`^` //defines the **begins with** selector
+```
+a[href^="http://"]		//this targets only anchor elements whose href attribute's value starts with "http://"
+```
+
+`$` //defines the **ends with** selector
+```
+a[href$=".pdf"]			//this targets only anchor elements whose href attribute's value ends with ".pdf"
+```
+
+`*` //defines the **contains** selector
+```
+img[src*="thumbnails"]	//this targets only img elements whose src attribute's value contains "thumbnails"
+```
+
+## Action pseudo-classes
+
+`:hover`
+`:focus`
+
+---
+
+## State pseudo-classes
+
+`:disabled`
+`:checked`
 
 ---
 
