@@ -216,3 +216,52 @@ img[src*="thumbnails"]	//this targets only img elements whose src attribute's va
 
 ---
 
+## `nth-child()` vs. `nth-of-type()`
+
+`div:nth-child(2)` targets the second **element** of its parent.
+`div:nth-of-type(2)` targets the second **div** of its parent.
+
+---
+
+## `:root` pseudo-class
+
+Targets the top element in the document (usually the <html>).
+
+---
+
+## `:target` pseudo-class
+
+Targets the element that is currently the target of a link
+
+---
+
+## `:not` pseudo-class
+
+Targets every element that does *not* fulfill the rule
+Examples: `input:not([type="submit"])` | `div:not(:first-child)`
+
+---
+
+## CSS pseudo-elements
+
+`::first-line`
+`::first-letter`
+`::before` //We always need to use `content: ` in conjunction with `:before` and `:after`.
+`::after`
+
+Note: although single colon works, usually we use double colon (`::`) with pseudo-elements to distinguish them from pseudo-classes.
+
+---
+
+## attr()
+
+Function used to retrieve the value of an attribute of the selected element and use it in the stylesheet.
+
+```
+a {
+	content: attr(href);
+}
+```
+
+---
+
