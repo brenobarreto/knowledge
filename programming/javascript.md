@@ -404,7 +404,16 @@ let previous = listItem2.previousElementSibling; //previous = <li class="c1">Ite
 
 ## .children | .firstElementChild | .lastElementChild
 
-* [el].firstElementChild = [el].children[0]
+* `el.firstElementChild` = `el.children[0]`
 
 ---
+
+## classList
+
+- classList.add() | `el.className += "hello"` = `el.classList.add("hello")`
+- classList.remove()
+- classList.toggle()
+
+---
+
 
