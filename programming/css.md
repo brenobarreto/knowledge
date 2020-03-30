@@ -28,6 +28,8 @@ For inline elements the browser will *not* apply:
 
 `display: inline-block` keeps elements floating horizontally but can bu styles as a block element
 
+Elements set to `inline` only occupy the space that their `.innerHTML` property takes up.
+
 ---
 
 ## `clear` property
@@ -74,6 +76,34 @@ An element with `absolute` position is always relative to the first parent that 
 
 ---
 
+## Units of measurement for CSS properties
+
+Absolute units:
+- px
+- in
+- mm
+- cm
+
+Relative units:
+- %
+- em  //A unit equivalent to the current font size. 
+- vw  //1vw = 1/100th of the viewport width
+- vh  //1vh = 1/100th of the viewport height
+
+---
+
+## `text-decoration`
+
+`text-decoration: none` //removes the underline 
+
+---
+
+## Hexadecimal and RGB
+
+`#0000ff` = `#00f` = `rgb(0,0,255)` = `rgb(0%,0%,100%)` = `blue`
+
+---
+
 ## `z-index`
 
 Positioned elements follow a stacking order that determines which elements are displayed above others.
@@ -109,24 +139,131 @@ Example:
 - `flex-direction: column`
 - `flex-direction: column-reverse`
 - `flex-wrap: wrap` //wraps child elements in more than one row or column so they fit regardless the size of the window
+
+- `order` //the default value is `0`. So, if I want to show an element first, I can use any value lower than 0. If I want to show it later, I can use any value greater than 0.
+- `flex-grow` //the default value is `0`. With different values, the items expand. The higher the value, the more space the element takes compared to the others.
+- `flex-basis` //sets the initial main size of a flex item. 
+- `flex` is shorthand for `flex-grow`, `flex-basis` and `flex-shrink`.
+
+Important:
+Using `margin: auto` in a flex item makes its margin occupy the entire space between the element and its sibling.
+With it, we can override the alignment specified by `justify-content`.
+
+The **flex container** contains the **flex items**.
+
+If you have `flex-direction: row` or `flex-direction: row-reverse`, the **main axis** is horizontal.
+If you have `flex-direction: column` or `flex-direction: column-reverse`, the **main axis** is vertical.
+
+The start of the main axis is the **main start** and the end of the main axis is the **main end**.
+
+The cross axis runs perpendicular to the main axis.
+It also has a **cross start** and a **cross end**.
+
+`justify-content` controls where flex items sit in the **main axis**.
 - `justify-content: flex-start` //(default)
 - `justify-content: flex-end`
 - `justify-content: center`
 - `justify-content: space-between` //puts equal space between the flex elements, with the first and last elements at the edges
 - `justify-content: space-around` //puts equal space between the flex elements and between the first and last elements and the edges
-- `order` //the default value is `0`. So, if I want to show an element first, I can use any value lower than 0. If I want to show it later, I can use any value greater than 0.
-- `flex-grow` //the default value is `0`. With different values, the items expand. The higher the value, the more space the element takes compared to the others.
-- `flex-basis` //sets the initial main size of a flex item. 
-- `flex` is shorthand for `flex-grow`, `flex-basis` and `flex-shrink`.
+
+
+`align-items` controls where flex items sit in the cross axis.
 - `align-items: stretch` //items stretch vertically
 - `align-items: flex-start` //items align to the start of the cross axis
 - `align-items: flex-end` //items align to the end of the cross axis
 - `align-items: center` //aligns items in the cross axis
 - `align-self` //alignment of single elements
 
-Important:
-Using `margin: auto` in a flex item makes its margin occupy the entire space between the element and its sibling.
-With it, we can override the alignment specified by `justify-content`.
+---
+
+## Flexbox vs. CSS Grid
+
+- Grid is two dimensional, while Flexbox is one dimensional
+- Grid is layout first, while Flexbox is content first
+- Flexbox is for components of an app, while Grid is for the app layout itself
+
+---
+
+## CSS Grid
+
+```css
+.container{
+	display: grid;
+	grid-template-columns: 10vw 10vw; //sets two columns, each with 10vw
+	grid-template-rows: 15vh 15vh; //sets two rows, each with 15vh
+	grid-gap: 10px; //sets a gutter of 10px between rows and columns
+	justify-content: center;
+}
+``` 
+
+---
+
+## Grid areas
+
+```css
+.container {
+	grid-template-columns: 45px 150px;
+	grid-template-rows: 50px 150px 30px;
+	grid-template-areas:	//creates the grid area
+	"hd hd hd hd hd"
+	"sd sd main main main"
+	"ft ft ft ft ft";
+}
+
+.item1 {
+	grid-area: main;	//places the item1 in the main area
+}
+
+.item2 {
+	grid-area: 1/1/3/5;	//row-start(including itselfi)/column-start(including itself)/row-end(excluding itself)/column-end(excluding itself) 
+}
+```
+
+---
+
+## Explicit tracks vs. Implicit tracks
+
+Explicit tracks are created with `grid-template-rows` and `grid-template-columns`. You manually define the number of tracks.
+
+Implicit tracks are automatically created when there are more grid items than cells.
+Implicit tracks are created with `grid-auto-collumns` and `grid-auto-rows`.
+```css
+.item{
+	grid-auto-columns: 15px; //new automatic columns will be 15px wide
+	grid-auto-rows: auto; //new automatic rows will have auto size
+}
+``` 
+
+---
+
+## fr unit
+
+`1fr` is 100% of the space available taking into account the gutter.
+For example:
+```css
+.container {
+  display: grid;
+  grid-template-columns: 800px repeat(3, 1fr); //creates 1 column with 800px and then 3 columns, each with the same fraction of the remaining space 
+  grid-auto-rows: minmax(50px, auto);
+  grid-gap: 10px;
+}
+```
+
+---
+
+## `auto-fill` and `auto-fit`
+
+```css
+grid-template-columns: repeat(auto-fill, 200px); //will create as many columns of 200px as possible inside the container
+grid-template-columns: repeat(auto-fit, 200px); //will create as many columns of 200px as there are elements to be displayed. Any empy tracks collapse. If there are more items, auto-fit creates more columns.
+```
+
+---
+
+## repeat() CSS function
+
+Can be used in the properties `grid-tempalte-columns` and `grid-template-rows`.
+`grid-template-rows: repeat(4, 1fr)` = `grid-template-rows: 1fr 1fr 1fr 1fr`
 
 ---
 
@@ -270,4 +407,5 @@ a {
 Note: doesn't work for inline elements such as <a>. I can change the element to `inline-block` to make it work.
 
 ---
+
 

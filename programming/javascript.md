@@ -416,4 +416,37 @@ let previous = listItem2.previousElementSibling; //previous = <li class="c1">Ite
 
 ---
 
+## Hoisting
 
+At run-time, all variables declared with `var` are hoisted, which means they are raised to the top of the functions scope.
+
+Variables declared with `let` or `const` are scoped to the **block** (between curly braces), not the function. 
+In such case, the variable is stuck in the **temporal dead zone** until its declaration is processed, if it ever is.
+
+---
+
+## `let` and `const`
+
+`let` and `const` can't be redeclared in the same scope.
+`let` can be reassigned. `const` cannot.
+
+---
+
+## Template literals
+
+Used for more efficient string interpolation (compared to interpolating through regular concatenation).
+
+Examples:
+
+```js
+let name = "Breno";
+console.log(`My name is ${name}.`);
+```
+
+```js
+let bananas = 3;
+let apples = 5;
+console.log(`There are ${bananas+apples} fruits in the basket.`)
+```
+
+---
